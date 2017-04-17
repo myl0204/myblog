@@ -3,7 +3,7 @@
 ### 本项目参考自 [一起学习Node.js](https://github.com/nswbmw/N-blog)
 项目中对应模块的用处
 1. `express`: web 框架
-2. `express-session: session 中间件
+2. `express-session`: session 中间件
 3. `connect-mongo`: 将 session 存储于 mongodb，结合 express-session 使用
 4. `connect-flash`: 页面通知提示的中间件，基于 session 实现
 5. `ejs`: 模板
