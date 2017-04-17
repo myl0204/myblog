@@ -17,9 +17,8 @@
 13. `winston`: 日志
 14. `express-winston`: 基于 winston 的用于 express 的日志中间件
 
-=====
-
-#####几个小问题:
+---
+##### 几个小问题:
 1. 服务器端如何判别是否登录? 浏览器里只有2个cookie,看不到session
 2. 弄清models文件夹下的文件和lib下的mongo.js之间的关系
 3. 当没有上传头像时,服务器端该如何处理?
