@@ -14,6 +14,8 @@ router.get('/', checkNotLogin, function(req, res, next) {
 
 // POST /signup 用户注册
 router.post('/', checkNotLogin, function(req, res, next) {
+  //req.fields 没有包含文件上传
+  //req.files 包含了文件的上传
   var name = req.fields.name;
   var gender = req.fields.gender;
   var bio = req.fields.bio;
@@ -32,9 +34,9 @@ router.post('/', checkNotLogin, function(req, res, next) {
     if (!(bio.length >= 1 && bio.length <= 30)) {
       throw new Error('个人简介请限制在 1-30 个字符');
     }
-    if (!req.files.avatar.name) {
-      throw new Error('缺少头像');
-    }
+    // if (!req.files.avatar.name) {
+    //   throw new Error('缺少头像');
+    // }
     // if (password.length < 6) {
     //   throw new Error('密码至少 6 个字符');
     // }
@@ -63,14 +65,14 @@ router.post('/', checkNotLogin, function(req, res, next) {
   UserModel.create(user)
     .then(function (result) {
       // 此 user 是插入 mongodb 后的值，包含 _id
-      // user = result.ops[0];
+      user = result.ops[0];
       // 将用户信息存入 session
-      // delete user.password;
-      // req.session.user = user;
+      delete user.password;
+      req.session.user = user;
       // 写入 flash
       req.flash('success', '注册成功,请登录!');
       // 跳转到首页
-      res.redirect('/signin');
+      res.redirect('/posts');
     })
     .catch(function (e) {
       // 注册失败，异步删除上传的头像
