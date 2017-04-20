@@ -20,5 +20,8 @@
 ---
 ##### 几个小问题:
 1. 服务器端如何判别是否登录? 浏览器里只有2个cookie,看不到session
+* 在服务器端保存req.session,与客户端的sid关联.通过客户端传来的sid判断是否登录.
+* cookie中expires/maxAge的值为Session 是什么意思/该什么设置?
 2. 弄清models文件夹下的文件和lib下的mongo.js之间的关系
 3. 当没有上传头像时,服务器端该如何处理?
+4. addCreateAt这个plugin又是什么鬼? objectID不是已经有了吗?
